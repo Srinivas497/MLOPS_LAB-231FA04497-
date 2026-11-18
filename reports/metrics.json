@@ -17,7 +17,7 @@
         ]
       ]
     },
-    "run_id": "fb96f566931d489ebd9486711e64f68c"
+    "run_id": "226bc640422343a89c1021fe107e9088"
   },
   "gradient_boosting": {
     "metrics": {
@@ -37,7 +37,7 @@
         ]
       ]
     },
-    "run_id": "48bb4d1726a14c258611e4f4b7ad1cd4"
+    "run_id": "eb7e981c35ee4ca598861fe535618f6c"
   },
   "selected_model": "decision_tree"
 }
