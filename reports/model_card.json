@@ -1,0 +1,7 @@
+{
+  "model": "decision_tree",
+  "registered_name": "FeederConnectionRisk",
+  "selection": "highest missed-connection recall, then F1",
+  "data": "600 synthetic records, V1 and V2 pooled; fixed random stratified 75/25 split",
+  "caveat": "Synthetic benchmark only; scores do not establish real-world performance."
+}

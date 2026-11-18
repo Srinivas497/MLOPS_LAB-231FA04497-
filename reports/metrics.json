@@ -1,0 +1,43 @@
+{
+  "decision_tree": {
+    "metrics": {
+      "accuracy": 0.92,
+      "precision_missed": 0.863013698630137,
+      "recall_missed": 0.9692307692307692,
+      "f1_missed": 0.9130434782608695,
+      "roc_auc": 0.9420814479638009,
+      "confusion_matrix": [
+        [
+          75,
+          10
+        ],
+        [
+          2,
+          63
+        ]
+      ]
+    },
+    "run_id": "fb96f566931d489ebd9486711e64f68c"
+  },
+  "gradient_boosting": {
+    "metrics": {
+      "accuracy": 0.9333333333333333,
+      "precision_missed": 0.9104477611940298,
+      "recall_missed": 0.9384615384615385,
+      "f1_missed": 0.9242424242424242,
+      "roc_auc": 0.9862443438914027,
+      "confusion_matrix": [
+        [
+          79,
+          6
+        ],
+        [
+          4,
+          61
+        ]
+      ]
+    },
+    "run_id": "48bb4d1726a14c258611e4f4b7ad1cd4"
+  },
+  "selected_model": "decision_tree"
+}
