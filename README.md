@@ -1,4 +1,6 @@
-# Railway Feeder Connection Risk (synthetic MLOps project)
+# MLOPS_LAB-231FA04497-
+
+## Railway Feeder Connection Risk (synthetic MLOps project)
 
 An end-to-end teaching project that estimates whether a passenger arriving on a train may miss a scheduled feeder bus. All included records are synthetic and the model is for demonstration only; a real deployment needs observed operational data, calibration, and station-specific validation.
 
@@ -41,4 +43,4 @@ Target is generated from the same operational rule plus a small stochastic buffe
 
 ## Repository publishing
 
-Initialize a Git repository, create a remote repository under your account, then run `git remote add origin <your-repository-url>` and `git push -u origin main`. No GitHub credentials/account or repository URL was available in this workspace, so the project is prepared locally for publishing.
+Repository remote: `https://github.com/Srinivas497/MLOPS_LAB-231FA04497-`.
