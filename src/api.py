@@ -1,6 +1,7 @@
 """FastAPI web application and prediction service for feeder-bus connection risk."""
 from pathlib import Path
 from typing import Literal
+from contextlib import asynccontextmanager
 import csv
 import json
 import threading
@@ -15,8 +16,13 @@ from .features import engineer_features, feature_names
 ROOT=Path(__file__).resolve().parents[1]
 MODEL_PATH=ROOT/"models"/"selected_model.joblib"
 WEB_PATH=ROOT/"web"
-app=FastAPI(title="Railway Feeder Connection Risk",version="1.0.0")
 model=None
+@asynccontextmanager
+async def lifespan(_app):
+    load_model()
+    yield
+
+app=FastAPI(title="Railway Feeder Connection Risk",version="1.0.0",lifespan=lifespan)
 training_state={"status":"idle","started_at":None,"finished_at":None,"error":None}
 training_lock=threading.Lock()
 class TransferRequest(BaseModel):
@@ -28,7 +34,6 @@ class TransferRequest(BaseModel):
     scheduled_transfer_time_min: float=Field(ge=0)
     lift_escalator_available: Literal["Yes","No"]
 
-@app.on_event("startup")
 def load_model():
     global model
     if MODEL_PATH.exists(): model=joblib.load(MODEL_PATH)
@@ -68,6 +73,13 @@ def dashboard_data():
             "datasets":{"v1":_dataset_summary("v1"),"v2":_dataset_summary("v2")},
             "metrics":metrics,"registry":{"name":"FeederConnectionRisk","latest_version":max(versions) if versions else None},
             "training":dict(training_state)}
+
+@app.get("/api/data/{version}")
+def download_dataset(version:str):
+    if version not in {"v1","v2"}: raise HTTPException(status_code=404,detail="Dataset version must be v1 or v2")
+    path=ROOT/"data"/"raw"/f"transfers_{version}.csv"
+    if not path.exists(): raise HTTPException(status_code=404,detail="Dataset has not been generated")
+    return FileResponse(path,media_type="text/csv",filename=path.name)
 
 def _run_training():
     try:

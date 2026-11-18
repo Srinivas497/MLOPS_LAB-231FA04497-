@@ -1,4 +1,4 @@
-from src.api import dashboard, dashboard_data
+from src.api import dashboard, dashboard_data, download_dataset
 
 def test_dashboard_page_and_summary():
     page=dashboard()
@@ -8,3 +8,4 @@ def test_dashboard_page_and_summary():
     assert summary["datasets"]["v2"]["records"]==300
     assert summary["registry"]["name"]=="FeederConnectionRisk"
     assert summary["metrics"]["selected_model"] in {"decision_tree","gradient_boosting"}
+    assert download_dataset("v1").media_type=="text/csv"

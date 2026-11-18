@@ -31,7 +31,7 @@ python -m src.train
 pytest -q
 ```
 
-Train also writes `data/feature_store/transfers_v1_features.csv`, `...v2_features.csv`, `reports/metrics.json`, `reports/model_card.json`, `models/selected_model.joblib`, and `mlruns/` tracking and registry artifacts. MLflow UI: `mlflow ui --backend-store-uri ./mlruns`.
+Train also writes `data/feature_store/transfers_v1_features.csv`, `...v2_features.csv`, `reports/metrics.json`, `reports/model_card.json`, `models/selected_model.joblib`, and `mlruns/` tracking and registry artifacts. In PowerShell, open the MLflow UI with `$env:MLFLOW_ALLOW_FILE_STORE="true"` followed by `mlflow ui --backend-store-uri ./mlruns`.
 
 ## Feature definition
 
